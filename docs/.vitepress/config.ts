@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { nav } from "./configs"
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,17 +13,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/assets/images/avatar-circle.png',
-    nav: [
-      { text: 'Home', link: '/' },
-      {
-        text: 'Tools',
-        items: [
-          { text: 'hzb-cli', link: '/hzb-cli/' },
-          { text: 'hzb-utils-box', link: 'https://zhongbohuang.github.io/hzb-utils-box/' },
-        ]
-      },
-      { text: '前端面试题', link: '/interview/' },
-    ],
+    nav,
     sidebar: {
       '/hzb-cli/': [
         {

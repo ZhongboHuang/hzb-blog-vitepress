@@ -2,15 +2,22 @@
 import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './style.css'
+import { useData } from "vitepress"
 
 export default {
   extends: Theme,
   Layout: () => {
-    return h(Theme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
+    const props: Record<string, any> = {}
+    const { frontmatter } = useData()
+
+    /* 添加自定义class */
+    if (frontmatter.value?.layoutClass) { 
+      props.class = frontmatter.value.layoutClass
+    }
+    
+    return h(Theme.Layout, props)
   },
-  enhanceApp({ app, router, siteData }) {
-    // ...
-  }
+  // enhanceApp({ app, router, siteData }) {
+  //   // ...
+  // }
 }

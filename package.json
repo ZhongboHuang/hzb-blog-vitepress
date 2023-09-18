@@ -1,11 +1,16 @@
 {
-  "devDependencies": {
-    "vitepress": "1.0.0-beta.7",
-    "vue": "^3.3.4"
-  },
+  "name": "hzb-blog-vitepress",
+  "description": "A VitePress blog by hzb",
+  "version": "0.1.0",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "@mdit-vue/shared": "^0.12.1",
+    "sass": "^1.67.0",
+    "vitepress": "1.0.0-beta.7",
+    "vue": "^3.3.4"
   }
 }
