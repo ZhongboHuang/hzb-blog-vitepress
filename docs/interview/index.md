@@ -12,9 +12,52 @@
 
 **重排**：当DOM的变化影响了元素的几何信息(DOM对象的位置和尺寸大小)，浏览器需要重新计算元素的几何属性，将其安放在界面中的正确位置，这个过程叫做重排,重排也叫回流.
 
-### 3. Content-Type有哪些类型
+### 3. Http请求中常见的Content-Type类型
 
-### 4. 从输入url到加载完成都经历了哪些步骤
+- application/x-www-form-urlencoded
+
+最常见的POST提交数据的方式。原生Form表单，如果不设置enctype属性，默认为application/x-www-form-urlencoded方式提交数据。
+
+- application/form-data
+
+Form表单enctype属性设置为multipart/form-data，它会将表单的数据处理为一条消息，以标签为单元，用分隔符（这就是boundary的作用）分开。
+
+这种方式既可以上传键值对，也可以上传文件，甚至多个文件。
+
+- application/json
+
+告诉服务端消息主体是序列化后的JSON字符串。
+
+- text/xml
+
+XML的作用不言而喻，用于传输和存储数据，它非常适合万维网传输，提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。
+
+- binary
+
+二进制文件类型
+
+### 4. 从输入url到浏览器显示页面的过程中都发生了什么
+
+- **URL解析**
+
+- **缓存判断**
+
+- **DNS解析**
+
+- **获取MAC地址**
+
+- **TCP三次握手**
+
+- **HTTPS握手**
+
+- **返回数据**
+
+- **页面渲染**
+
+根据html构建DOM树 -> 根据css文件构建CSSOM树 -> 遇到script标签判断是否含有defer和async属性，否则会阻塞页面渲染 -> 构建渲染树
+-> 根据渲染树布局 -> 绘制
+
+- **TCP四次挥手**
 
 ## Css
 
@@ -49,7 +92,7 @@
 
 ### 1. 如何判断是Object还是Array?
 
-使用 `Object.prototype.toString.call()`，**Object** 返回 `'[object Object**]'`，**Array** 返回 `'[Object Array]'`
+使用 `Object.prototype.toString.call()`，**Object** 返回 `'[object Object]'`，**Array** 返回 `'[Object Array]'`
 
 ### 2. 闭包和闭包的缺点?
 
@@ -74,6 +117,15 @@
 ## Vue
 
 ### 1. vue的通信方式，父子、爷孙、兄弟、顶级?
+
+父子: props/emits; v-model; defineExpose; $children/$parent; ref/refs
+
+爷孙(多层级): $attrs/$listeners(vue3中取消了$listeners); provide/inject
+
+兄弟: vuex、pinia
+
+顶级: eventBus/mitt; localStorage/sessionStorage
+
 ### 2. v-for使用中为什么不建议使用index作为key?
 ### 3. diff算法中key的作用?
 ### 4. 双向数据绑定是如何实现的?
@@ -88,6 +140,30 @@
 ## 移动端
 
 ### 1. 移动端如何实现自适应
+
+- rem + vw、vh 方案
+
+```scss
+// 使用sass自定义单位
+@use "sass:math";
+
+@function pxToRem($px) {
+	@return math.div($px, 16) + rem;
+}
+
+// 375*812
+@function pxToVW($px) {
+	@return math.div($px, 3.75) + vw;
+}
+
+@function pxToVH($px) {
+	@return math.div($px, 8.12) + vh;
+}
+```
+
+- scale
+
+- vw、vh
 
 ## Http
 
