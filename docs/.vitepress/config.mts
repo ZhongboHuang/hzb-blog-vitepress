@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from "vitepress"
 import { nav } from "./configs"
 
 // https://vitepress.dev/reference/site-config

@@ -106,6 +106,12 @@ export const NAV_DATA: NavData[] = [
         link: 'https://mobile.ant.design'
       },
       {
+        icon: '/icons/chakraUI.svg',
+        title: 'Chakra UI',
+        desc: 'Chakra UI是一个简单，模块化和可访问的组件库',
+        link: 'https://chakra-ui.com'
+      },
+      {
         icon: 'https://docs.pmnd.rs/apple-touch-icon.png',
         title: 'Zustand',
         desc: '一个小型、快速、可扩展的 React 状态管理解决方案',
@@ -248,7 +254,7 @@ export const NAV_DATA: NavData[] = [
         link: 'https://sass-lang.com'
       },
       {
-        icon: 'https://www.tailwindcss.cn/apple-touch-icon.png',
+        icon: '/icons/tailwindcss.svg',
         title: 'TailwindCSS 中文网',
         desc: '一个功能类优先的 CSS 框架',
         link: 'https://www.tailwindcss.cn'
@@ -571,6 +577,23 @@ export const NAV_DATA: NavData[] = [
         title: 'Pixiv',
         // desc: '',
         link: 'https://www.pixiv.net'
+      }
+    ]
+  },
+  {
+    title: '博客集',
+    items: [
+      {
+        icon: '/icons/maomao.png',
+        title: '茂茂物语',
+        desc: '知识是进步的阶梯，争取每天都有知识点更新',
+        link: 'https://notes.fe-mm.com'
+      },
+      {
+        icon: 'https://cdn-image.houdunren.com/storage/202307/ebORpzNvLXteMuy3dNDsuCpsQ70UNbG7bqhcfitQ.jpg',
+        title: '后盾人',
+        desc: '向军大叔的个人博客',
+        link: 'https://www.houdunren.com'
       }
     ]
   }

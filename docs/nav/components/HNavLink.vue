@@ -47,11 +47,11 @@ const svg = computed(() => {
   height: 100%;
   cursor: pointer;
   transition: all 0.3s;
+  text-decoration: none;
+  background-color: var(--vp-c-bg-soft);
   &:hover {
-    box-shadow: var(--vp-shadow-2);
-    border-color: var(--vp-c-brand);
+    border-color: var(--vp-c-brand-1);
     text-decoration: initial;
-    background-color: var(--vp-c-bg-soft-up);
   }
 
   .box {
