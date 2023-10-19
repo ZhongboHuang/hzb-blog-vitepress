@@ -205,32 +205,6 @@ beforeCreated 钩子函数常用于执行一些组件实例化阶段的操作，
 
 ## 移动端
 
-### 1. 移动端如何实现自适应
-
-- rem + vw、vh 方案
-
-```scss
-// 使用sass自定义单位
-@use "sass:math";
-
-@function pxToRem($px) {
-	@return math.div($px, 16) + rem;
-}
-
-// 375*812
-@function pxToVW($px) {
-	@return math.div($px, 3.75) + vw;
-}
-
-@function pxToVH($px) {
-	@return math.div($px, 8.12) + vh;
-}
-```
-
-- scale
-
-- vw、vh
-
 ## Http
 
 ### 1. get和post的区别
@@ -256,9 +230,88 @@ beforeCreated 钩子函数常用于执行一些组件实例化阶段的操作，
 - 异步加载JavaScript，以免阻塞页面渲染（慎用）
 
 ### 2. 小程序如何处理安全区域和刘海屏
-### 3. 大屏适配方案(transform: scale)
+### 3. 屏幕适配方案
+
+- rem + vw、vh 方案
+
+```scss
+/* 
+  移动端适配方案
+  使用sass自定义单位
+*/ 
+@use "sass:math";
+
+@function pxToRem($px) {
+	@return math.div($px, 16) + rem;
+}
+
+// 375*812
+@function pxToVW($px) {
+	@return math.div($px, 3.75) + vw;
+}
+
+@function pxToVH($px) {
+	@return math.div($px, 8.12) + vh;
+}
+```
+
+- 使用 postcss-pxtorem + amfe-flexible
+
+1. 安装
+
+```shell
+npm install postcss-pxtorem --save
+npm install amfe-flexible --save
+npm install autoprefixer --save
+```
+2. 在 `main.js` 中引入依赖
+
 ```js
-/* 默认大屏为 1920 * 1080 */
+import 'amfe-flexible'
+```
+
+3. 在 `vite.config.js` 中配置
+
+```js
+import { defineConfig } from 'vite'
+import autoprefixer from "autoprefixer";
+import postCssPxToRem from "postcss-pxtorem";
+
+export default defineConfig({
+  ...
+  css: {
+    postcss: {
+      plugins: [
+        autoprefixer({
+          overrideBrowserslist: [
+            "Android 4.1",
+            "iOS 7.1",
+            "Chrome > 31",
+            "ff > 31",
+            "ie >= 8",
+          ],
+        }),
+        postCssPxToRem({
+          // 自适应，px>rem转换
+          rootValue: 192, // 192表示1920设计稿
+          propList: ["*", "!border"], //  除 border 外所有 px 转 rem
+          selectorBlackList: [".el-"], // 过滤掉el-开头的class，不进行rem转换
+          exclude: "/node_modules", // 忽略包文件转换rem
+        }),
+      ],
+    },
+  },
+})
+```
+
+- scale 方案
+
+```js
+/* 
+  默认大屏为 1920 * 1080
+  transform: scale 方案
+  固定宽高比的web应用，如大屏或者固定窗口业务应用
+ */
 const getScale = (width, height) => {
   // 1.根据当前屏幕大小计算出缩放比例
   const scale = Math.min(
