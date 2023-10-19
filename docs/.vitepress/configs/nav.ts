@@ -10,5 +10,11 @@ export const nav: DefaultTheme.Config['nav'] = [
       { text: 'hzb-utils-box', link: 'https://zhongbohuang.github.io/hzb-utils-box/' },
     ]
   },
-  { text: '前端面试题', link: '/interview/' }
+  {
+    text: 'Tips',
+    items: [
+      { text: 'Python 小技巧', link: '/Tips/Python/' },
+    ]
+  },
+  { text: '前端面试题', link: '/interview/' },
 ]
