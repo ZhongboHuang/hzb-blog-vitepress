@@ -27,6 +27,12 @@ export default defineConfig({
           link: '/interview/'
         },
       ],
+      '/vue/': [
+        {
+          text: 'Vue 相关',
+          link: '/vue/'
+        }
+      ]
     },
 
     socialLinks: [
